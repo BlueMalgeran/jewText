@@ -57,6 +57,8 @@ namespace jewText
             Messages.PrintWithPrefix("5", "Find And Replace", "Aqua");
             Messages.PrintWithPrefix("6", "Remove Empty Lines", "Aqua");
             Messages.PrintWithPrefix("7", "Extract Column", "Aqua");
+            Messages.PrintWithPrefix("8", "Extract Regex", "Aqua");
+            Console.WriteLine();
             Messages.PrintWithPrefix("99", "Exit", "Aqua");
             string choice = Console.ReadLine();
             switch (choice)
@@ -87,6 +89,10 @@ namespace jewText
 
                 case "7":
                     ExtractColumn.Start();
+                    break;
+
+                case "8":
+                    ExtractRegex.Start();
                     break;
 
                 case "99":
