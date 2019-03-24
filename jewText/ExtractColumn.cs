@@ -40,10 +40,10 @@ namespace jewText
         private static void Process()
         {
             Console.Clear();
-            Messages.PrintWithPrefix("Input", "Enter the character you want to extract... IT MUST BE 1 CHARACTER! (Exaple: |)", "Aqua");
-            char column = char.Parse(Console.ReadLine());
+            Messages.PrintWithPrefix("Input", "Enter the character you want to extract...", "Aqua");
+            string column = Console.ReadLine();
             Console.WriteLine();
-            Messages.PrintWithPrefix("Input", "Enter the argument number... (Example: jewdev1|jewdev2)", "Aqua");
+            Messages.PrintWithPrefix("Input", "Enter the argument number... (Example: 1|2|3|4|5)", "Aqua");
             int number = int.Parse(Console.ReadLine());
 
             Console.Clear();
@@ -51,7 +51,7 @@ namespace jewText
 
             foreach (var line in Variables.Lines)
             {
-                string[] words = line.Split(column);
+                string[] words = line.Split(new string[] {column}, StringSplitOptions.None);
                 ExtractedLines.Add(words[number - 1]);
             }
             Variables.Lines.Clear();
