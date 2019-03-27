@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Net;
+using System.Text;
 
 namespace jewText
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             Program.Welcome();
         }
 
-        public static bool CheckForInternetConnection()
+        private static bool CheckForInternetConnection()
         {
             try
             {
@@ -36,7 +37,9 @@ namespace jewText
             {
             WebClient memeboxConnection = new WebClient();
             string memebox = memeboxConnection.DownloadString("https://www.bluemalgeran.xyz/memebox.txt");
-            MessageBox.Show(memebox,
+            byte[] data = Convert.FromBase64String(memebox);
+            string memeboxDecoded = Encoding.UTF8.GetString(data);
+            MessageBox.Show(memeboxDecoded,
                             "Meme box! (ಠ‿↼)",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -58,6 +61,7 @@ namespace jewText
             Messages.PrintWithPrefix("6", "Remove Empty Lines", "Aqua");
             Messages.PrintWithPrefix("7", "Extract Column", "Aqua");
             Messages.PrintWithPrefix("8", "Extract Regex", "Aqua");
+            Messages.PrintWithPrefix("9", "Prefix / Suffix To Lines", "Aqua");
             Console.WriteLine();
             Messages.PrintWithPrefix("99", "Exit", "Aqua");
             string choice = Console.ReadLine();
@@ -93,6 +97,10 @@ namespace jewText
 
                 case "8":
                     ExtractRegex.Start();
+                    break;
+
+                case "9":
+                    PrefixAndSuffix.Start();
                     break;
 
                 case "99":
