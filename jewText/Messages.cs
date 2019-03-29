@@ -23,7 +23,7 @@ namespace jewText
 
         public static void PrintWithPrefix(string prefix, string message, string prefixColor)
         {
-            object locked = Messages.Locked;
+            object locked = Locked;
             lock (locked)
             {
                 Console.Write("[".Pastel(Color.White));
@@ -34,7 +34,7 @@ namespace jewText
 
         public static void Print(string message)
         {
-            object locked = Messages.Locked;
+            object locked = Locked;
             lock (locked)
             {
                 Console.WriteLine(message.Pastel(Color.White));

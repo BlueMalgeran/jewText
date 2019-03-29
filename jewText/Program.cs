@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Net;
 using System.Text;
+using System.Windows.Forms;
 
 namespace jewText
 {
@@ -9,7 +9,7 @@ namespace jewText
     {
         private static void Main()
         {
-            Program.Welcome();
+            Welcome();
         }
 
         private static bool CheckForInternetConnection()
@@ -32,20 +32,20 @@ namespace jewText
         {
             Console.Title = string.Format("jewText | v{0}", Variables.Version);
             Messages.Logo();
-            Messages.PrintWithPrefix("Welcome", "Press any key to continue.", "Aqua");
-            if (CheckForInternetConnection() == true)
+            Messages.PrintWithPrefix("Welcome", "Press any key to continue.", "DeepSkyBlue");
+            if (CheckForInternetConnection())
             {
-            WebClient memeboxConnection = new WebClient();
-            string memebox = memeboxConnection.DownloadString("https://www.bluemalgeran.xyz/memebox.txt");
-            byte[] data = Convert.FromBase64String(memebox);
-            string memeboxDecoded = Encoding.UTF8.GetString(data);
-            MessageBox.Show(memeboxDecoded,
-                            "Meme box! (ಠ‿↼)",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                WebClient memeboxConnection = new WebClient();
+                string memebox = memeboxConnection.DownloadString("https://www.bluemalgeran.xyz/memebox.txt");
+                byte[] data = Convert.FromBase64String(memebox);
+                string memeboxDecoded = Encoding.UTF8.GetString(data);
+                MessageBox.Show(memeboxDecoded,
+                                "Meme box! (ಠ‿↼)",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
             }
             Console.ReadKey();
-            Program.Menu();
+            Menu();
         }
 
         private static void Menu()
@@ -53,17 +53,18 @@ namespace jewText
             Console.Clear();
             Console.Title = string.Format("jewText | v{0} | Menu", Variables.Version);
             Messages.Logo();
-            Messages.PrintWithPrefix("1", "Remove Duplicates", "Aqua");
-            Messages.PrintWithPrefix("2", "Remove Containing", "Aqua");
-            Messages.PrintWithPrefix("3", "Randomize Lines", "Aqua");
-            Messages.PrintWithPrefix("4", "Sort Lines", "Aqua");
-            Messages.PrintWithPrefix("5", "Find And Replace", "Aqua");
-            Messages.PrintWithPrefix("6", "Remove Empty Lines", "Aqua");
-            Messages.PrintWithPrefix("7", "Extract Column", "Aqua");
-            Messages.PrintWithPrefix("8", "Extract Regex", "Aqua");
-            Messages.PrintWithPrefix("9", "Prefix / Suffix To Lines", "Aqua");
+            Messages.PrintWithPrefix("1", "Remove Duplicates", "DeepSkyBlue");
+            Messages.PrintWithPrefix("2", "Remove Containing", "DeepSkyBlue");
+            Messages.PrintWithPrefix("3", "Randomize Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("4", "Sort Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("5", "Find And Replace", "DeepSkyBlue");
+            Messages.PrintWithPrefix("6", "Remove Empty Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("7", "Extract Column", "DeepSkyBlue");
+            Messages.PrintWithPrefix("8", "Extract Regex", "DeepSkyBlue");
+            Messages.PrintWithPrefix("9", "Prefix / Suffix To Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("10", "Extract Combos", "DeepSkyBlue");
             Console.WriteLine();
-            Messages.PrintWithPrefix("99", "Exit", "Aqua");
+            Messages.PrintWithPrefix("99", "Exit", "DeepSkyBlue");
             string choice = Console.ReadLine();
             switch (choice)
             {
@@ -103,6 +104,10 @@ namespace jewText
                     PrefixAndSuffix.Start();
                     break;
 
+                case "10":
+                    ExtractCombos.Start();
+                    break;
+
                 case "99":
                     DialogResult dialogResult = MessageBox.Show("Do you really want to leave me?",
                                                                 "Exit? (ಥ﹏ಥ)",
@@ -114,13 +119,13 @@ namespace jewText
                     }
                     else if (dialogResult == DialogResult.No)
                     {
-                        Program.Menu();
+                        Menu();
                     }
                     break;
 
                 default:
                     Console.Clear();
-                    Program.Menu();
+                    Menu();
                     break;
             }
         }

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtractColumn.cs" />
+    <Compile Include="ExtractCombos.cs" />
     <Compile Include="ExtractRegex.cs" />
     <Compile Include="FindAndReplace.cs" />
     <Compile Include="Messages.cs" />
