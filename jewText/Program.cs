@@ -63,6 +63,7 @@ namespace jewText
             Messages.PrintWithPrefix("8", "Extract Regex", "DeepSkyBlue");
             Messages.PrintWithPrefix("9", "Prefix / Suffix To Lines", "DeepSkyBlue");
             Messages.PrintWithPrefix("10", "Extract Combos", "DeepSkyBlue");
+            Messages.PrintWithPrefix("11", "Combo Combiner", "DeepSkyBlue");
             Console.WriteLine();
             Messages.PrintWithPrefix("99", "Exit", "DeepSkyBlue");
             string choice = Console.ReadLine();
@@ -106,6 +107,10 @@ namespace jewText
 
                 case "10":
                     ExtractCombos.Start();
+                    break;
+
+                case "11":
+                    ComboCombiner.Start();
                     break;
 
                 case "99":
