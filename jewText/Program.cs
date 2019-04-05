@@ -12,12 +12,12 @@ namespace jewText
             Welcome();
         }
 
-        private static bool CheckForInternetConnection()
+        private static bool CheckConnection()
         {
             try
             {
                 using (var client = new WebClient())
-                using (client.OpenRead("https://www.bluemalgeran.xyz/memebox.txt"))
+                using (client.OpenRead("http://www.jews-trash.tk/api.php"))
                 {
                     return true;
                 }
@@ -33,7 +33,7 @@ namespace jewText
             Console.Title = string.Format("jewText | v{0}", Variables.Version);
             Messages.Logo();
             Messages.PrintWithPrefix("Welcome", "Press any key to continue.", "DeepSkyBlue");
-            if (CheckForInternetConnection())
+            if (CheckConnection())
             {
                 WebClient memeboxConnection = new WebClient();
                 string memebox = memeboxConnection.DownloadString("https://www.bluemalgeran.xyz/memebox.txt");
