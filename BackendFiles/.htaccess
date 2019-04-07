@@ -1,0 +1,4 @@
+<FilesMatch "logs\.txt|banlist\.txt">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

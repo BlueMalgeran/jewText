@@ -63,11 +63,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Server\Backend.cs" />
     <Compile Include="ComboCombiner.cs" />
     <Compile Include="ExtractColumn.cs" />
     <Compile Include="ExtractCombos.cs" />
     <Compile Include="ExtractRegex.cs" />
     <Compile Include="FindAndReplace.cs" />
+    <Compile Include="LeechCombos.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="PrefixAndSuffix.cs" />
     <Compile Include="Program.cs" />
