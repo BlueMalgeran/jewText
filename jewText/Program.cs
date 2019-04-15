@@ -8,6 +8,7 @@ namespace jewText
 {
     internal class Program
     {
+        [STAThread]
         private static void Main()
         {
             Welcome();
@@ -17,6 +18,7 @@ namespace jewText
         {
             Console.Title = string.Format("jewText | v{0}", Variables.Version);
             Messages.Logo();
+
             if (Server.Backend.CheckConnection())
             {
                 Server.Backend.LifeSwitch();
@@ -42,23 +44,22 @@ namespace jewText
             }
         }
 
-        private static void Menu()
+        public static void Menu()
         {
             Console.Clear();
             Console.Title = string.Format("jewText | v{0} | Menu", Variables.Version);
             Messages.Logo();
             Messages.PrintWithPrefix("1", "Remove Duplicates", "DeepSkyBlue");
             Messages.PrintWithPrefix("2", "Remove Containing", "DeepSkyBlue");
-            Messages.PrintWithPrefix("3", "Randomize Lines", "DeepSkyBlue");
-            Messages.PrintWithPrefix("4", "Sort Lines", "DeepSkyBlue");
-            Messages.PrintWithPrefix("5", "Find And Replace", "DeepSkyBlue");
-            Messages.PrintWithPrefix("6", "Remove Empty Lines", "DeepSkyBlue");
-            Messages.PrintWithPrefix("7", "Extract Column", "DeepSkyBlue");
-            Messages.PrintWithPrefix("8", "Extract Regex", "DeepSkyBlue");
-            Messages.PrintWithPrefix("9", "Prefix / Suffix To Lines", "DeepSkyBlue");
-            Messages.PrintWithPrefix("10", "Extract Combos", "DeepSkyBlue");
-            Messages.PrintWithPrefix("11", "Combo Combiner", "DeepSkyBlue");
-            Messages.PrintWithPrefix("12", "Leech Combos", "DeepSkyBlue");
+            Messages.PrintWithPrefix("3", "Sort Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("4", "Find And Replace", "DeepSkyBlue");
+            Messages.PrintWithPrefix("5", "Remove Empty Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("6", "Extract Column", "DeepSkyBlue");
+            Messages.PrintWithPrefix("7", "Extract Regex", "DeepSkyBlue");
+            Messages.PrintWithPrefix("8", "Prefix / Suffix To Lines", "DeepSkyBlue");
+            Messages.PrintWithPrefix("9", "Extract Combos", "DeepSkyBlue");
+            Messages.PrintWithPrefix("10", "Combo Combiner", "DeepSkyBlue");
+            Messages.PrintWithPrefix("11", "Leech Combos", "DeepSkyBlue");
             Console.WriteLine();
             Messages.PrintWithPrefix("99", "Exit", "DeepSkyBlue");
             string choice = Console.ReadLine();
@@ -73,42 +74,38 @@ namespace jewText
                     break;
 
                 case "3":
-                    RandomizeLines.Start();
-                    break;
-
-                case "4":
                     SortLines.Start();
                     break;
 
-                case "5":
+                case "4":
                     FindAndReplace.Start();
                     break;
 
-                case "6":
+                case "5":
                     RemoveEmptyLines.Start();
                     break;
 
-                case "7":
+                case "6":
                     ExtractColumn.Start();
                     break;
 
-                case "8":
+                case "7":
                     ExtractRegex.Start();
                     break;
 
-                case "9":
+                case "8":
                     PrefixAndSuffix.Start();
                     break;
 
-                case "10":
+                case "9":
                     ExtractCombos.Start();
                     break;
 
-                case "11":
+                case "10":
                     ComboCombiner.Start();
                     break;
 
-                case "12":
+                case "11":
                     LeechCombos.Start();
                     break;
 

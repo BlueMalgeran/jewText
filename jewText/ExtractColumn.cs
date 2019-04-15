@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace jewText
 {
@@ -11,20 +12,23 @@ namespace jewText
         {
             Console.Clear();
             Console.Title = string.Format("jewText | v{0} | Extract Column", Variables.Version);
-            Messages.PrintWithPrefix("Input", "Please drag your file to the program.", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Input", "Please choose a file.", "DeepSkyBlue");
 
-            string file = Console.ReadLine();
-            bool brackets = file != null && file.Contains("\"");
-            string path;
-            if (brackets)
+            var file = new OpenFileDialog();
+
+            file.Title = "Choose a text file";
+            file.Filter = "Text files|*.txt";
+            file.FilterIndex = 2;
+            file.RestoreDirectory = true;
+            if (file.ShowDialog() == DialogResult.OK)
             {
-                path = file.Replace("\"", "");
+                string path = file.FileName;
+                Variables.Lines = File.ReadLines(path ?? throw new InvalidOperationException()).ToList();
             }
             else
             {
-                path = file;
+                Program.Menu();
             }
-            Variables.Lines = File.ReadLines(path ?? throw new InvalidOperationException()).ToList();
             ProcessInfo();
         }
 
@@ -62,12 +66,28 @@ namespace jewText
         private static void Done()
         {
             Console.Clear();
-            Messages.PrintWithPrefix("Input", "File name?", "DeepSkyBlue");
-            var filename = Console.ReadLine();
-            File.WriteAllLines(filename + ".txt", ExtractedLines);
+            Messages.PrintWithPrefix("Input", "Please choose file location to save the file!", "DeepSkyBlue");
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = $"jewText - Extract Column - {ExtractedLines.Count} Lines";
+            saveFile.Filter = "Text files|*.txt";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFile.FileName))
+                {
+                    foreach (string line in ExtractedLines)
+                    {
+                        sw.WriteLine(line);
+                    }
+                }
+            }
+            else
+            {
+                Program.Menu();
+            }
             ExtractedLines.Clear();
             Console.Clear();
-            Messages.PrintWithPrefix("Info", $"Saved the file in the name you have chosen: {filename}! (The file is probably in my file location!)", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Info", $"Saved the file! File location: {saveFile.FileName}", "DeepSkyBlue");
             Messages.PrintWithPrefix("Done", "Press any key to close the program.", "DeepSkyBlue");
             Console.ReadKey();
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace jewText
 {
@@ -10,21 +11,23 @@ namespace jewText
         {
             Console.Clear();
             Console.Title = string.Format("jewText | v{0} | Sort Lines", Variables.Version);
-            Messages.PrintWithPrefix("Input", "Please drag your file to the program.", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Input", "Please choose a file.", "DeepSkyBlue");
 
-            string file = Console.ReadLine();
-            bool brackets = file != null && file.Contains("\"");
-            string path;
-            if (brackets)
+            var file = new OpenFileDialog();
+
+            file.Title = "Choose a text file";
+            file.Filter = "Text files|*.txt";
+            file.FilterIndex = 2;
+            file.RestoreDirectory = true;
+            if (file.ShowDialog() == DialogResult.OK)
             {
-                path = file.Replace("\"", "");
+                string path = file.FileName;
+                Variables.Lines = File.ReadLines(path ?? throw new InvalidOperationException()).ToList();
             }
             else
             {
-                path = file;
+                Program.Menu();
             }
-            Variables.Lines = File.ReadLines(path ?? throw new InvalidOperationException()).ToList();
-
             ProcessInfo();
         }
 
@@ -41,9 +44,11 @@ namespace jewText
         {
             Console.Clear();
             Messages.PrintWithPrefix("Info", "Please choose a type of sorting.", "DeepSkyBlue");
+            Console.WriteLine();
             Messages.PrintWithPrefix("1", "Sort By Alphabetically", "DeepSkyBlue");
             Messages.PrintWithPrefix("2", "Sort By Length", "DeepSkyBlue");
             Messages.PrintWithPrefix("3", "Reverse", "DeepSkyBlue");
+            Messages.PrintWithPrefix("4", "Randomize", "DeepSkyBlue");
             string choice = Console.ReadLine();
             switch (choice)
             {
@@ -70,18 +75,48 @@ namespace jewText
                     Variables.Lines.Reverse();
                     Done();
                     break;
+
+                case "4":
+                    Console.Clear();
+                    Messages.PrintWithPrefix("Process", "Working... (If the file is BIG it will take a lot more time)", "DeepSkyBlue");
+
+                    var randomizeListlist = Variables.Lines.OrderBy(a => Guid.NewGuid()).ToList();
+                    Variables.Lines.Clear();
+                    foreach (string line in randomizeListlist)
+                    {
+                        Variables.Lines.Add(line);
+                    }
+                    Done();
+                    break;
             }
         }
 
         private static void Done()
         {
             Console.Clear();
-            Messages.PrintWithPrefix("Input", "File name?", "DeepSkyBlue");
-            var filename = Console.ReadLine();
-            File.WriteAllLines(filename + ".txt", Variables.Lines);
+            Messages.PrintWithPrefix("Input", "Please choose file location to save the file!", "DeepSkyBlue");
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = $"jewText - Sort Lines - {Variables.Lines.Count} Lines";
+            saveFile.Filter = "Text files|*.txt";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFile.FileName))
+                {
+                    foreach (string line in Variables.Lines)
+                    {
+                        sw.WriteLine(line);
+                    }
+                }
+            }
+            else
+            {
+                Program.Menu();
+            }
+
             Variables.Lines.Clear();
             Console.Clear();
-            Messages.PrintWithPrefix("Info", $"Saved the file in the name you have chosen: {filename}! (The file is probably in my file location!)", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Info", $"Saved the file! File location: {saveFile.FileName}", "DeepSkyBlue");
             Messages.PrintWithPrefix("Done", "Press any key to close the program.", "DeepSkyBlue");
             Console.ReadKey();
         }

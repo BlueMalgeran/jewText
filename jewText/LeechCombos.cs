@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace jewText
 {
@@ -25,7 +26,7 @@ namespace jewText
             WebClient connection = new WebClient();
             string response = connection.DownloadString(url ?? throw new InvalidOperationException());
 
-            foreach (Match match in Regex.Matches(response, @"([^\s]+?[:;][^\s]+)"))
+            foreach (Match match in Regex.Matches(response, @"([^\s]+?[:][^\s]+)"))
             {
                 Variables.Lines.Add(match.Value);
             }
@@ -45,12 +46,28 @@ namespace jewText
         private static void Done()
         {
             Console.Clear();
-            Messages.PrintWithPrefix("Input", "File name?", "DeepSkyBlue");
-            var filename = Console.ReadLine();
-            File.WriteAllLines(filename + ".txt", Variables.Lines);
+            Messages.PrintWithPrefix("Input", "Please choose file location to save the file!", "DeepSkyBlue");
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = $"jewText - Leech Combos - {Variables.Lines.Count} Lines";
+            saveFile.Filter = "Text files|*.txt";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFile.FileName))
+                {
+                    foreach (string line in Variables.Lines)
+                    {
+                        sw.WriteLine(line);
+                    }
+                }
+            }
+            else
+            {
+                Program.Menu();
+            }
             Variables.Lines.Clear();
             Console.Clear();
-            Messages.PrintWithPrefix("Info", $"Saved the file in the name you have chosen: {filename}! (The file is probably in my file location!)", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Info", $"Saved the file! File location: {saveFile.FileName}", "DeepSkyBlue");
             Messages.PrintWithPrefix("Done", "Press any key to close the program.", "DeepSkyBlue");
             Console.ReadKey();
         }
