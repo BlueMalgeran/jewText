@@ -21,9 +21,6 @@ namespace jewText
 
             if (Server.Backend.CheckConnection())
             {
-                Server.Backend.LifeSwitch();
-                Server.Backend.CheckBan();
-
                 Messages.PrintWithPrefix("Welcome", "Press any key to continue.", "DeepSkyBlue");
                 WebClient memeboxConnection = new WebClient();
                 string memebox = memeboxConnection.DownloadString("http://www.jews-trash.tk/memebox.txt");
