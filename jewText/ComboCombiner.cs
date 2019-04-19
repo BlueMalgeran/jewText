@@ -12,11 +12,11 @@ namespace jewText
         {
             Console.Clear();
             Console.Title = string.Format("jewText | v{0} | Combo Combiner", Variables.Version);
-            Messages.PrintWithPrefix("Input", "Please choose a file.", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Input", "Please choose files that you want to combine.", "DeepSkyBlue");
 
             var file = new OpenFileDialog();
 
-            file.Title = "Choose a text file";
+            file.Title = "Choose text files";
             file.Filter = "Text files|*.txt";
             file.FilterIndex = 2;
             file.RestoreDirectory = true;
