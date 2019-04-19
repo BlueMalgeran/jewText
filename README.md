@@ -9,9 +9,12 @@ Authored and maintained by jewdev.
 
 > **Nulled Profile** [@jewdev](https://www.nulled.to/user/1880782-)
 
-> **Discord Server** [@jewdev's basement](https://discord.gg/VkDnTQP)
+> **Discord Server** [jewdev's basement](https://discord.gg/VkDnTQP)
 
 > **Website** [BlueMalgeran.xyz](https://bluemalgeran.xyz)
+
+## Screenshot
+![screenshot](https://i.imgur.com/zXcSBWt.png)
 
 ## Special Thanks
 > Special thanks for my beta testers!
@@ -25,7 +28,7 @@ Authored and maintained by jewdev.
 
 ## [LICENSE](https://github.com/BlueMalgeran/jewText/blob/master/LICENSE)
 
-## FAQ:
+## FAQ
 1. Q: How can I report bugs?
    
    A: Join my Discord server or report it in the repo.
