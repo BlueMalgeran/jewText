@@ -2,6 +2,8 @@
 
 jewText - A program I originally made for [Nulled.to](https://nulled.to) but idk I want to make it public here.
 
+## [Download](https://github.com/BlueMalgeran/jewText/releases/latest)
+
 ## Author
 
 **jewText** © [jewdev](https://github.com/BlueMalgeran).  
