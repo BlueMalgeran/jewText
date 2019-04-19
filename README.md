@@ -11,6 +11,8 @@ Authored and maintained by jewdev.
 
 > **Discord Server** [@jewdev's basement](https://discord.gg/VkDnTQP)
 
+> **Website** [BlueMalgeran.xyz](https://bluemalgeran.xyz)
+
 ## Special Thanks
 > Special thanks for my beta testers!
 > > Matan
