@@ -63,6 +63,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboSplitter.cs" />
     <Compile Include="Server\Backend.cs" />
     <Compile Include="ComboCombiner.cs" />
     <Compile Include="ExtractColumn.cs" />

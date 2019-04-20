@@ -57,6 +57,7 @@ namespace jewText
             Messages.PrintWithPrefix("9", "Extract Combos", "DeepSkyBlue");
             Messages.PrintWithPrefix("10", "Combo Combiner", "DeepSkyBlue");
             Messages.PrintWithPrefix("11", "Leech Combos", "DeepSkyBlue");
+            Messages.PrintWithPrefix("12", "Combo Splitter", "DeepSkyBlue");
             Console.WriteLine();
             Messages.PrintWithPrefix("99", "Exit", "DeepSkyBlue");
             string choice = Console.ReadLine();
@@ -104,6 +105,10 @@ namespace jewText
 
                 case "11":
                     LeechCombos.Start();
+                    break;
+
+                case "12":
+                    ComboSplitter.Start();
                     break;
 
                 case "99":
