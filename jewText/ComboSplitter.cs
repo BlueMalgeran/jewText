@@ -41,6 +41,10 @@ namespace jewText
                 {
                     _folder = fbd.SelectedPath;
                 }
+                else
+                {
+                    Program.Menu();
+                }
             }
 
             ProcessInfo();
