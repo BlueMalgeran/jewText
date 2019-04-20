@@ -6,8 +6,7 @@ jewText - A program I originally made for [Nulled.to](https://nulled.to) but idk
 
 ## Author
 
-**jewText** © [jewdev](https://github.com/BlueMalgeran).  
-Authored and maintained by jewdev.
+**jewText** © [jewdev](https://github.com/BlueMalgeran) Authored and maintained by jewdev.
 
 > **Nulled Profile** [@jewdev](https://www.nulled.to/user/1880782-)
 
