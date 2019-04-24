@@ -15,7 +15,7 @@ jewText - A program I originally made for [Nulled.to](https://nulled.to) but idk
 > **Website** [BlueMalgeran.xyz](https://bluemalgeran.xyz)
 
 ## Screenshot
-![screenshot](https://i.imgur.com/zXcSBWt.png)
+![screenshot](https://i.imgur.com/P1CK8Be.png)
 
 ## Special Thanks
 > Special thanks for my beta testers!
