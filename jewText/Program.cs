@@ -23,7 +23,7 @@ namespace jewText
             {
                 Messages.PrintWithPrefix("Welcome", "Press any key to continue.", "DeepSkyBlue");
                 WebClient memeboxConnection = new WebClient();
-                string memebox = memeboxConnection.DownloadString("http://www.jews-trash.tk/memebox.txt");
+                string memebox = memeboxConnection.DownloadString("https://www.bluemalgeran.xyz/memebox.txt");
                 byte[] data = Convert.FromBase64String(memebox);
                 string memeboxDecoded = Encoding.UTF8.GetString(data);
                 MessageBox.Show(memeboxDecoded,

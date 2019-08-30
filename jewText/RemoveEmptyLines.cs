@@ -75,8 +75,9 @@ namespace jewText
             Variables.Lines.Clear();
             Console.Clear();
             Messages.PrintWithPrefix("Info", $"Saved the file! File location: {saveFile.FileName}", "DeepSkyBlue");
-            Messages.PrintWithPrefix("Done", "Press any key to close the program.", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Done", "Press any key to go back to the menu.", "DeepSkyBlue");
             Console.ReadKey();
+            Program.Menu();
         }
     }
 }

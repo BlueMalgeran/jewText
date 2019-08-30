@@ -104,8 +104,9 @@ namespace jewText
             Console.Clear();
             Console.Clear();
             Messages.PrintWithPrefix("Info", $"Saved the splitted files! File location: {_folder}", "DeepSkyBlue");
-            Messages.PrintWithPrefix("Done", "Press any key to close the program.", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Done", "Press any key to go back to the menu.", "DeepSkyBlue");
             Console.ReadKey();
+            Program.Menu();
         }
 
         private static string _path;

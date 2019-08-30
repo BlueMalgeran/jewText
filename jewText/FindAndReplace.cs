@@ -65,8 +65,6 @@ namespace jewText
         private static void Done()
         {
             Console.Clear();
-            Messages.PrintWithPrefix("Input", "File name?", "DeepSkyBlue");
-
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.FileName = $"jewText - Find And Replace - {ReplacedLines.Count} Lines";
             saveFile.Filter = "Text files|*.txt";
@@ -88,8 +86,9 @@ namespace jewText
             ReplacedLines.Clear();
             Console.Clear();
             Messages.PrintWithPrefix("Info", $"Saved the file! File location: {saveFile.FileName}", "DeepSkyBlue");
-            Messages.PrintWithPrefix("Done", "Press any key to close the program.", "DeepSkyBlue");
+            Messages.PrintWithPrefix("Done", "Press any key to go back to the menu.", "DeepSkyBlue");
             Console.ReadKey();
+            Program.Menu();
         }
 
         private static List<string> ReplacedLines = new List<string>();
