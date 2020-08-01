@@ -19,6 +19,7 @@ namespace jewText
             Console.Title = string.Format("jewText | v{0}", Variables.Version);
             Messages.Logo();
 
+            /*
             if (Server.Backend.CheckConnection())
             {
                 Messages.PrintWithPrefix("Welcome", "Press any key to continue.", "DeepSkyBlue");
@@ -39,6 +40,9 @@ namespace jewText
                 Thread.Sleep(5000);
                 Environment.Exit(0);
             }
+            */
+
+            Menu();
         }
 
         public static void Menu()
